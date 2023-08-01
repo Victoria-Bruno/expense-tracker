@@ -16,8 +16,8 @@ function App() {
     <div>
       <h1>Let's get started!</h1>
       <Card>
-      <Expenses item={expenses}/>
       <NewExpense />
+      <Expenses item={expenses}/>
       </Card>
     </div>
   );
