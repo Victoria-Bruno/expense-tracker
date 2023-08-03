@@ -12,11 +12,21 @@ const expenses = [
 
 
 function App() {
+
+//STEP 2: add a function with a parameter we will receive from the child component (NewExpense in this case)
+//STEP 3: go to the child component (NewExpense) to call that prop *parameter that will be passed to function
+const addExpenseHandler = (expense) => {
+  console.log('In App.js');
+  console.log(expense);
+}
+
+
+//STEP 1: create pointer to function that will handle the parameter coming from the child component
   return (
     <div>
       <h1>Let's get started!</h1>
       <Card>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/> 
       <Expenses item={expenses}/>
       </Card>
     </div>

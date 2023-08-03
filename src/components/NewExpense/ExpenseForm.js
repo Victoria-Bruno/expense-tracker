@@ -1,7 +1,7 @@
 import { React, useState} from "react";
 import "./ExpenseForm.css"
 
-export const ExpenseForm = () => {
+export const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState(" ") 
   const [enteredAmount, setEnteredAmount] = useState(" ") 
   const [enteredDate, setEnteredDate] = useState(" ") 
@@ -50,6 +50,9 @@ export const ExpenseForm = () => {
     };
     console.log(expenseData);
 
+   //Here with props I am passing the function to the Parent component NewExpense
+   //I can pass the expenseData above as an argument for the function
+    props.onSaveExpenseData(expenseData)
     // Here I am clearing the form for new inputs
     setEnteredTitle('');
     setEnteredAmount('');
