@@ -13,21 +13,10 @@ const Expenses = (props) => {
   return (
     <Card className="expenses">
       <ExpensesFilter selected={filterYear} onChangeFilter={filterChangeHandler}/>
-      <ExpenseItem
-        title={props.item[0].title}
-        amount={props.item[0].amount}
-        date={props.item[0].date}
-      />
-      <ExpenseItem
-        title={props.item[1].title}
-        amount={props.item[1].amount}
-        date={props.item[1].date}
-      />
-      <ExpenseItem
-        title={props.item[2].title}
-        amount={props.item[2].amount}
-        date={props.item[2].date}
-      />
+      
+      {/* Using map I transform the object in App.js with the entries to the JSX element <ExpenseItem>  */}
+      {props.item.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date}/>)}
+     
     </Card>
   );
 };
