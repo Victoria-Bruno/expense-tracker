@@ -15,8 +15,13 @@ const Expenses = (props) => {
       <ExpensesFilter selected={filterYear} onChangeFilter={filterChangeHandler}/>
       
       {/* Using map I transform the object in App.js with the entries to the JSX element <ExpenseItem>  */}
-      {props.item.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date}/>)}
-     
+      {props.item.map((expense, index) => <ExpenseItem 
+      key={expense.id}
+      title={expense.title} 
+      amount={expense.amount} 
+      date={expense.date}
+      />
+      )}
     </Card>
   );
 };
