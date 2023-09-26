@@ -28,13 +28,15 @@ export const NewExpense = (props) => {
     setClickStatus('unclicked')
 };
 
+    const cancelAddExpense = (cancellation) => {
+       setClickStatus('unclicked')
+    }
+
 //I am missing how to reset to initial state - the else if here is wrong
     if (clickStatus === 'clicked') {
-        return <div className='new-expense'>
-        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-        </div>
-    } else if (cardOutput === null) {
-        setClickStatus('unclicked')
+        return cardOutput = (<div className='new-expense'>
+        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancellation={cancelAddExpense}/>
+        </div>);
     }
 
     return (<div>
