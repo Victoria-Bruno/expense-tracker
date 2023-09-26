@@ -41,7 +41,6 @@ export const ExpenseForm = (props) => {
     // })
   }
 
-
   const submitHandler = (event) => {
     event.preventDefault();
     
@@ -82,17 +81,11 @@ export const ExpenseForm = (props) => {
       </div>
       </div>
       <div className='new-expense__actions'>
-        <button onClick={clickHandler}>Cancel</button>
+        <button type='button' onClick={props.onCancellation}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
     </div>
-
-//Here I am saying that if I click on cancel I want my output to become null, not sure though...
-
-if (clickStatus === 'clicked') {
-  props.onCancellation('unclicked')
-}
 
 return (<div>{formOutput}</div>)
 };
