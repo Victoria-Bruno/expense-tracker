@@ -23,6 +23,7 @@ const addExpenseHandler = (expense) => {
 };
 
 
+
 //STEP 1: create pointer to function that will handle the parameter coming from the child component
   return (
     <div>

@@ -5,6 +5,8 @@ export const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState(" ") 
   const [enteredAmount, setEnteredAmount] = useState(" ") 
   const [enteredDate, setEnteredDate] = useState(" ") 
+  const [clickStatus, setClickStatus] = useState('')
+  
   
   // Option to combine all inputs in one object
   // const [userInput, setUserInput]=useState({
@@ -59,23 +61,38 @@ export const ExpenseForm = (props) => {
     setEnteredDate('');  
   };
 
-  return <form onSubmit={submitHandler}>
-    <div className="new-expense__controls">
-    <div className="new-expense__control">
-    <label>Title</label>
-    <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
+  const clickHandler = (event) => {
+        setClickStatus('clicked')
+    }
+
+    let formOutput = <div>
+    <form onSubmit={submitHandler}>
+      <div className="new-expense__controls">
+      <div className="new-expense__control">
+      <label>Title</label>
+      <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
+      </div>
+      <div className="new-expense__control">
+      <label>Amount</label>
+      <input type="number" min='0.01' step='0.01' value={enteredAmount} onChange={amountChangeHandler}/>
+      </div>
+      <div className="new-expense__control">
+      <label>Date</label>
+      <input type="date"  min='2019-01-01' max='2033-12-31' value={enteredDate} onChange={dateChangeHandler}/>
+      </div>
+      </div>
+      <div className='new-expense__actions'>
+        <button onClick={clickHandler}>Cancel</button>
+        <button type='submit'>Add Expense</button>
+      </div>
+    </form>
     </div>
-    <div className="new-expense__control">
-    <label>Amount</label>
-    <input type="number" min='0.01' step='0.01' value={enteredAmount} onChange={amountChangeHandler}/>
-    </div>
-    <div className="new-expense__control">
-    <label>Date</label>
-    <input type="date"  min='2019-01-01' max='2033-12-31' value={enteredDate} onChange={dateChangeHandler}/>
-    </div>
-    </div>
-    <div className='new-expense__actions'>
-      <button type='submit'>Add Expense</button>
-    </div>
-  </form>;
+
+//Here I am saying that if I click on cancel I want my output to become null, not sure though...
+
+if (clickStatus === 'clicked') {
+  props.onCancellation('unclicked')
+}
+
+return (<div>{formOutput}</div>)
 };
