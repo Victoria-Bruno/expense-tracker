@@ -89,8 +89,9 @@ export const ExpenseForm = (props) => {
     </div>
 
 //Here I am saying that if I click on cancel I want my output to become null, not sure though...
+
 if (clickStatus === 'clicked') {
-  return formOutput = null
+  props.onCancellation('unclicked')
 }
 
 return (<div>{formOutput}</div>)
