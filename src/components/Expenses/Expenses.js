@@ -3,6 +3,7 @@ import './Expenses.css';
 import Card from '../UI/Card';
 import ExpensesFilter from '../ExpenseFilter/ExpensesFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 const Expenses = (props) => {
   const [filterYear, setFilterYear] = useState("");
@@ -19,6 +20,7 @@ const filteredExpenses = props.item.filter(expense => {
 //Using && operator conditional rendering if I have no items in filtered year
   return (
     <Card className="expenses">
+      <ExpensesChart expenses={filteredExpenses}/>
       <ExpensesFilter selected={filterYear} onChangeFilter={filterChangeHandler}/>
       <ExpensesList items={filteredExpenses}/>
     </Card>
